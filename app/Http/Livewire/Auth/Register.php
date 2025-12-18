@@ -25,7 +25,7 @@ class Register extends Component
     {
         $this->validate(['email'=>'required|email:rfc,dns|unique:users']);
     }
-    
+
     public function register()
     {
         $this->validate([
@@ -34,6 +34,8 @@ class Register extends Component
         ]);
 
         $user = User::create([
+            'name' => 'User Name',
+            'department' => 'User Department',
             'email' =>$this->email,
             'password' => Hash::make($this->password),
             'remember_token' => Str::random(10),
